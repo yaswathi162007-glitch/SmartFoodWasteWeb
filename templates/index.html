@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart Food Waste Reducer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <h1>🍱 Smart Food Waste Reducer</h1>
+
+        <p class="subtitle">
+            Reduce food waste and improve tomorrow's food preparation.
+        </p>
+
+        <form method="POST">
+            <label>Total Students:</label>
+            <input type="number" name="total_students" required>
+
+            <label>Students Who Ate:</label>
+            <input type="number" name="students_ate" required>
+
+            <label>Wasted Food (kg):</label>
+            <input type="number" step="0.1" name="wasted_food" required>
+
+            <button type="submit">Calculate</button>
+        </form>
+
+        {% if result %}
+        <div class="result">
+            <h2>Food Waste Summary</h2>
+
+            <p>Remaining Meals: {{ result.remaining_meals }}</p>
+            <p>Waste Percentage: {{ result.waste_percentage }}%</p>
+            <p>Food Saving Score: {{ result.saving_score }}%</p>
+
+            <h3>{{ result.message }}</h3>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
+
